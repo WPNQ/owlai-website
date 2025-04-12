@@ -14,6 +14,9 @@
             --darker-bg: #1a1a2e;
             --text-light: #f8f8f8;
             --text-subtle: #d1c4e9;
+            --accent-green: #4CAF50;
+            --accent-blue: #2196F3;
+            --accent-orange: #FF9800;
         }
         
         body {
@@ -47,7 +50,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .logo {
@@ -67,15 +70,144 @@
             letter-spacing: 2px;
         }
 
+        /* Status section */
+        .status-section {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: rgba(20, 10, 30, 0.5);
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .status-left {
+            width: 70%;
+        }
+
+        .status-right {
+            width: 25%;
+        }
+
+        /* Status indicator */
+        .status-indicator {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(124, 77, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--primary-color);
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Progress meters */
+        .meter-container {
+            margin-bottom: 1rem;
+        }
+
+        .meter-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        .meter {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            border-radius: 3px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .meter-fill-1 {
+            width: 76%;
+            background-color: var(--accent-green);
+        }
+
+        .meter-fill-2 {
+            width: 43%;
+            background-color: var(--accent-blue);
+        }
+
+        .meter-fill-3 {
+            width: 89%;
+            background-color: var(--accent-orange);
+        }
+
+        /* Mini chart */
+        .mini-chart {
+            height: 80px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .chart-bar {
+            width: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 2px 2px 0 0;
+            opacity: 0.7;
+        }
+
         /* Message styles */
         .message {
             font-size: 1.2rem;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             color: var(--text-subtle);
             line-height: 1.6;
             padding: 1.5rem;
             background-color: rgba(30, 18, 45, 0.5);
             border-radius: 8px;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--secondary-color), var(--dark-bg));
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(94, 53, 177, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(94, 53, 177, 0.6);
         }
 
         /* Contact info */
@@ -95,32 +227,6 @@
 
         .contact a:hover {
             color: var(--secondary-color);
-        }
-
-        /* Status indicator */
-        .status-indicator {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: rgba(124, 77, 255, 0.3);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            border: 1px solid var(--primary-color);
-        }
-
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #4CAF50;
-            border-radius: 50%;
-            margin-right: 5px;
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
         }
 
         /* Animated background */
@@ -157,6 +263,31 @@
             }
         }
 
+        /* System logs */
+        .system-logs {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background-color: rgba(10, 5, 15, 0.8);
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            text-align: left;
+            height: 60px;
+            overflow: hidden;
+            color: #7CFC00;
+        }
+
+        .log-line {
+            margin-bottom: 0.3rem;
+            white-space: nowrap;
+            animation: typeIn 1s;
+        }
+
+        @keyframes typeIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
         /* Responsive styles */
         @media (max-width: 768px) {
             .app-container {
@@ -174,6 +305,18 @@
             
             .logo {
                 font-size: 2rem;
+            }
+            
+            .status-section {
+                flex-direction: column;
+            }
+            
+            .status-left, .status-right {
+                width: 100%;
+            }
+            
+            .status-right {
+                margin-top: 1rem;
             }
         }
     </style>
@@ -193,9 +336,66 @@
             <h1>OwlAI</h1>
         </div>
         
-        <!-- Status indicator -->
-        <div class="status-indicator">
-            <span class="status-dot"></span> In Development
+        <!-- Status section with meters and chart -->
+        <div class="status-section">
+            <div class="status-left">
+                <!-- Status indicator -->
+                <div class="status-indicator">
+                    <span class="status-dot"></span> In Development
+                </div>
+                
+                <!-- Progress meters -->
+                <div class="meter-container">
+                    <div class="meter-label">
+                        <span>Core Learning Engine</span>
+                        <span>76%</span>
+                    </div>
+                    <div class="meter">
+                        <div class="meter-fill meter-fill-1"></div>
+                    </div>
+                </div>
+                
+                <div class="meter-container">
+                    <div class="meter-label">
+                        <span>Natural Language Processing</span>
+                        <span>43%</span>
+                    </div>
+                    <div class="meter">
+                        <div class="meter-fill meter-fill-2"></div>
+                    </div>
+                </div>
+                
+                <div class="meter-container">
+                    <div class="meter-label">
+                        <span>Data Integration</span>
+                        <span>89%</span>
+                    </div>
+                    <div class="meter">
+                        <div class="meter-fill meter-fill-3"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="status-right">
+                <!-- Mini chart -->
+                <div class="mini-chart">
+                    <div class="chart-bar" style="height: 40%;"></div>
+                    <div class="chart-bar" style="height: 70%;"></div>
+                    <div class="chart-bar" style="height: 45%;"></div>
+                    <div class="chart-bar" style="height: 60%;"></div>
+                    <div class="chart-bar" style="height: 80%;"></div>
+                    <div class="chart-bar" style="height: 65%;"></div>
+                    <div class="chart-bar" style="height: 90%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- System logs -->
+        <div class="system-logs">
+            <div class="log-line">Initializing neural network components...</div>
+            <div class="log-line">Training model on latest dataset...</div>
+            <div class="log-line">Optimizing inference engine...</div>
+            <div class="log-line">System status: preparing for launch...</div>
         </div>
         
         <!-- Message -->
@@ -203,6 +403,9 @@
             Our intelligent assistant is hatching soon! <br>
             We're working hard to bring you something special.
         </div>
+        
+        <!-- Back to Home button -->
+        <a href="index.html" class="btn">Back to Home</a>
         
         <!-- Contact information -->
         <div class="contact">
@@ -231,6 +434,28 @@
                 
                 bgAnimation.appendChild(span);
             }
+            
+            // Animate system logs for a terminal effect
+            const logLines = document.querySelectorAll('.log-line');
+            let delay = 0;
+            
+            logLines.forEach((line, index) => {
+                line.style.display = 'none';
+                
+                setTimeout(() => {
+                    line.style.display = 'block';
+                }, 1000 * index);
+            });
+            
+            // Animated chart bars
+            setInterval(() => {
+                const bars = document.querySelectorAll('.chart-bar');
+                bars.forEach(bar => {
+                    const newHeight = Math.floor(Math.random() * 70) + 30 + '%';
+                    bar.style.height = newHeight;
+                    bar.style.transition = 'height 1s ease';
+                });
+            }, 3000);
         });
     </script>
 </body>
