@@ -123,102 +123,41 @@
             }
         }
 
-        /* Owl animation */
-        .owl-container {
-            margin: 2rem auto;
-            width: 200px;
-            height: 200px;
+        /* Simple Owl Icon Animation */
+        .owl-icon {
+            font-size: 6rem;
+            color: #b388ff;
+            margin: 2rem 0;
             position: relative;
+            display: inline-block;
         }
 
-        .owl {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .owl-body {
-            width: 120px;
-            height: 160px;
-            background: #5e35b1;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        .eye-wink {
             position: absolute;
-            top: 20px;
-            left: 40px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .owl-head {
-            width: 140px;
-            height: 120px;
-            background: #7c4dff;
+            width: 8px;
+            height: 8px;
+            background-color: #1a1a2e;
             border-radius: 50%;
-            position: absolute;
-            top: 0;
-            left: 30px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            top: 44px;
+            transform: translateX(-50%);
         }
 
-        .owl-eye {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 40px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        .eye-left {
+            left: 43%;
         }
 
-        .owl-eye-left {
-            left: 50px;
-        }
-
-        .owl-eye-right {
-            right: 50px;
-        }
-
-        .owl-pupil {
-            width: 20px;
-            height: 20px;
-            background: #2d1a45;
-            border-radius: 50%;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            transition: all 0.5s ease;
-        }
-
-        .owl-beak {
-            width: 20px;
-            height: 10px;
-            background: #f8c291;
-            border-radius: 0 0 10px 10px;
-            position: absolute;
-            bottom: 40px;
-            left: 60px;
-        }
-
-        .owl-eye-lid {
-            width: 40px;
-            height: 40px;
-            background: #7c4dff;
-            border-radius: 50%;
-            position: absolute;
-            top: 40px;
-            transform-origin: top;
-            animation: wink 4s infinite;
-        }
-
-        .owl-eye-lid-right {
-            right: 50px;
+        .eye-right {
+            right: 32%;
         }
 
         @keyframes wink {
-            0%, 30%, 36%, 100% {
-                transform: scaleY(0);
-            }
-            32%, 34% {
+            0%, 45%, 55%, 100% {
                 transform: scaleY(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scaleY(0.1);
+                opacity: 0.8;
             }
         }
 
@@ -237,9 +176,18 @@
                 font-size: 1.2rem;
             }
             
-            .owl-container {
-                width: 160px;
-                height: 160px;
+            .owl-icon {
+                font-size: 5rem;
+            }
+            
+            .eye-left {
+                left: 41%;
+                top: 37px;
+            }
+            
+            .eye-right {
+                right: 31%;
+                top: 37px;
             }
         }
     </style>
@@ -253,20 +201,10 @@
     <div class="container">
         <h1>OwlAI</h1>
         
-        <!-- Animated Owl -->
-        <div class="owl-container">
-            <div class="owl">
-                <div class="owl-body"></div>
-                <div class="owl-head"></div>
-                <div class="owl-eye owl-eye-left">
-                    <div class="owl-pupil"></div>
-                </div>
-                <div class="owl-eye owl-eye-right">
-                    <div class="owl-pupil"></div>
-                    <div class="owl-eye-lid owl-eye-lid-right"></div>
-                </div>
-                <div class="owl-beak"></div>
-            </div>
+        <!-- Animated Owl Icon -->
+        <div class="owl-icon">
+            <i class="fas fa-owl"></i>
+            <span class="eye-wink eye-right"></span>
         </div>
         
         <!-- Message -->
@@ -306,19 +244,8 @@
                 bgAnimation.appendChild(span);
             }
             
-            // Add interactive pupil movement
-            const owlContainer = document.querySelector('.owl-container');
-            const pupils = document.querySelectorAll('.owl-pupil');
+            // Set up winking animation
+            const eyeRight = document.querySelector('.eye-right');
             
-            document.addEventListener('mousemove', function(e) {
-                const x = (e.clientX / window.innerWidth) - 0.5;
-                const y = (e.clientY / window.innerHeight) - 0.5;
-                
-                pupils.forEach(pupil => {
-                    pupil.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            function wink() {
+                eyeRight.style.animation = 'wink
