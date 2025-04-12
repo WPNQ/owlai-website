@@ -31,6 +31,13 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Logo styles */
+        .logo {
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            color: #b388ff;
+        }
+
         h1 {
             font-size: 3.5rem;
             margin: 0 0 1rem 0;
@@ -123,41 +130,20 @@
             }
         }
 
-        /* Egg Container */
-        .egg-container {
-            width: 180px;
-            height: 180px;
-            margin: 2rem auto;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Egg Animation */
-        @keyframes shake {
-            0%, 100% { transform: rotate(0deg); }
-            20% { transform: rotate(-2deg); }
-            40% { transform: rotate(2deg); }
-            60% { transform: rotate(-1deg); }
-            80% { transform: rotate(1deg); }
-        }
-
-        @keyframes crack {
-            0%, 90% { stroke-dasharray: 0 100; }
-            100% { stroke-dasharray: 100 0; }
-        }
-
-        /* Apply animations */
-        .egg {
-            animation: shake 1.5s infinite;
-            transform-origin: center bottom;
-        }
-
-        .crack {
-            stroke-dasharray: 0 100;
-            stroke-dashoffset: 0;
-            animation: crack 5s infinite alternate;
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -168,12 +154,49 @@
     </div>
     
     <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <i class="fas fa-owl"></i>
+        </div>
+        
         <h1>OwlAI</h1>
         
-        <!-- Egg Animation -->
-        <div class="egg-container">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <!-- Egg -->
-                <g class="egg">
-                    <!-- Egg shape -->
-                    <ellipse cx="100" cy="120" rx="60" ry="70" fill="url(#eggGradient)" stroke="#b388ff" stroke-width="2" />
+        <!-- Message -->
+        <div class="message">
+            Our intelligent assistant is hatching soon! <br>
+            We're working hard to bring you something special.
+        </div>
+        
+        <!-- No button, removed as requested -->
+        
+        <!-- Contact information -->
+        <div class="contact">
+            For information please contact: <a href="mailto:Will@owlai.app">Will@owlai.app</a>
+        </div>
+    </div>
+
+    <script>
+        // Create animated background elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const bgAnimation = document.querySelector('.bg-animation');
+            const count = 20;
+            
+            for (let i = 0; i < count; i++) {
+                const span = document.createElement('span');
+                
+                const size = Math.random() * 50 + 10;
+                span.style.width = size + 'px';
+                span.style.height = size + 'px';
+                
+                span.style.top = Math.random() * 100 + '%';
+                span.style.left = Math.random() * 100 + '%';
+                
+                span.style.animationDelay = Math.random() * 5 + 's';
+                span.style.animationDuration = Math.random() * 20 + 10 + 's';
+                
+                bgAnimation.appendChild(span);
+            }
+        });
+    </script>
+</body>
+</html>
