@@ -123,23 +123,41 @@
             }
         }
 
-        /* SVG Owl */
-        .owl-container {
+        /* Egg Container */
+        .egg-container {
             width: 180px;
             height: 180px;
             margin: 2rem auto;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* CSS Animation for winking */
-        @keyframes wink {
-            0%, 90%, 100% { opacity: 1; }
-            95% { opacity: 0; }
+        /* Egg Animation */
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(-2deg); }
+            40% { transform: rotate(2deg); }
+            60% { transform: rotate(-1deg); }
+            80% { transform: rotate(1deg); }
         }
 
-        /* Apply animation to the right eye */
-        .right-eye {
-            animation: wink 4s infinite;
+        @keyframes crack {
+            0%, 90% { stroke-dasharray: 0 100; }
+            100% { stroke-dasharray: 100 0; }
+        }
+
+        /* Apply animations */
+        .egg {
+            animation: shake 1.5s infinite;
+            transform-origin: center bottom;
+        }
+
+        .crack {
+            stroke-dasharray: 0 100;
+            stroke-dashoffset: 0;
+            animation: crack 5s infinite alternate;
         }
     </style>
 </head>
@@ -152,69 +170,10 @@
     <div class="container">
         <h1>OwlAI</h1>
         
-        <!-- SVG Owl -->
-        <div class="owl-container">
+        <!-- Egg Animation -->
+        <div class="egg-container">
             <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <!-- Owl body -->
-                <ellipse cx="100" cy="110" rx="70" ry="80" fill="#7c4dff" />
-                
-                <!-- Owl head -->
-                <circle cx="100" cy="80" r="60" fill="#b388ff" />
-                
-                <!-- Ears -->
-                <polygon points="60,40 70,10 80,40" fill="#b388ff" />
-                <polygon points="140,40 130,10 120,40" fill="#b388ff" />
-                
-                <!-- Eyes -->
-                <circle cx="70" cy="70" r="15" fill="#ffffff" stroke="#000000" stroke-width="1" />
-                <circle cx="130" cy="70" r="15" fill="#ffffff" stroke="#000000" stroke-width="1" class="right-eye" />
-                
-                <!-- Pupils -->
-                <circle cx="70" cy="70" r="7" fill="#000000" />
-                <circle cx="130" cy="70" r="7" fill="#000000" class="right-eye" />
-                
-                <!-- Beak -->
-                <polygon points="90,95 110,95 100,115" fill="#ffa726" />
-            </svg>
-        </div>
-        
-        <!-- Message -->
-        <div class="message">
-            Our intelligent assistant is hatching soon! <br>
-            We're working hard to bring you something special.
-        </div>
-        
-        <!-- Back button -->
-        <a href="index.html" class="btn">Back to Home</a>
-        
-        <!-- Contact information -->
-        <div class="contact">
-            For information please contact: <a href="mailto:Will@owlai.app">Will@owlai.app</a>
-        </div>
-    </div>
-
-    <script>
-        // Create animated background elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const bgAnimation = document.querySelector('.bg-animation');
-            const count = 20;
-            
-            for (let i = 0; i < count; i++) {
-                const span = document.createElement('span');
-                
-                const size = Math.random() * 50 + 10;
-                span.style.width = size + 'px';
-                span.style.height = size + 'px';
-                
-                span.style.top = Math.random() * 100 + '%';
-                span.style.left = Math.random() * 100 + '%';
-                
-                span.style.animationDelay = Math.random() * 5 + 's';
-                span.style.animationDuration = Math.random() * 20 + 10 + 's';
-                
-                bgAnimation.appendChild(span);
-            }
-        });
-    </script>
-</body>
-</html>
+                <!-- Egg -->
+                <g class="egg">
+                    <!-- Egg shape -->
+                    <ellipse cx="100" cy="120" rx="60" ry="70" fill="url(#eggGradient)" stroke="#b388ff" stroke-width="2" />
